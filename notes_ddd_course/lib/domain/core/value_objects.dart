@@ -5,8 +5,9 @@ import 'package:notes_ddd_course/domain/core/failures.dart';
 @immutable
 abstract class ValueObject<T> {
   Either<ValueFailure<T>, T> get value;
-
   const ValueObject();
+
+  bool isValid() => value.isRight();
 
   @override
   bool operator ==(Object o) {
