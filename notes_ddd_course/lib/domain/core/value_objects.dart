@@ -1,16 +1,26 @@
 import 'package:dartz/dartz.dart';
-import 'package:notes_ddd_course/domain/core/errors.dart';
+import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:notes_ddd_course/domain/core/errors.dart';
 import 'package:notes_ddd_course/domain/core/failures.dart';
 
 @immutable
 abstract class ValueObject<T> {
-  Either<ValueFailure<T>, T> get value;
   const ValueObject();
+  Either<ValueFailure<T>, T> get value;
 
   /// Throws [UnexpectedValueError] containing the [ValueFailure]
-  T getOrCrash() => value.fold((f) => throw UnexpectedValueError(f), id);
-  // id = identity - same as writing (right) => rigth
+  T getOrCrash() {
+    // id = identity - same as writing (right) => right
+    return value.fold((f) => throw UnexpectedValueError(f), id);
+  }
+
+  Either<ValueFailure<dynamic>, Unit> get failureOrUnit {
+    return value.fold(
+      (l) => left(l),
+      (r) => right(unit),
+    );
+  }
 
   bool isValid() => value.isRight();
 
@@ -25,5 +35,5 @@ abstract class ValueObject<T> {
   int get hashCode => value.hashCode;
 
   @override
-  String toString() => 'ValueObject(value: $value)';
+  String toString() => 'Value($value)';
 }
