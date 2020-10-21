@@ -18,7 +18,7 @@ class AppWidget extends StatelessWidget {
         ),
       ),
       debugShowCheckedModeBanner: false,
-      home: SignInPage(),
+      home: const SignInPage(),
     );
   }
 }
