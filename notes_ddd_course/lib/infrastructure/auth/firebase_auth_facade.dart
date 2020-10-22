@@ -29,8 +29,8 @@ class FirebaseAuthFacade implements IAuthFacade {
     final passwordStr = password.getOrCrash();
     try {
       await _firebaseAuth.createUserWithEmailAndPassword(
-        email: emailAddressStr,
-        password: passwordStr,
+        email: emailAddressStr as String,
+        password: passwordStr as String,
       );
       return right(unit);
     } on PlatformException catch (e) {
@@ -51,8 +51,8 @@ class FirebaseAuthFacade implements IAuthFacade {
     final passwordStr = password.getOrCrash();
     try {
       await _firebaseAuth.signInWithEmailAndPassword(
-        email: emailAddressStr,
-        password: passwordStr,
+        email: emailAddressStr as String,
+        password: passwordStr as String,
       );
       return right(unit);
     } on PlatformException catch (e) {
