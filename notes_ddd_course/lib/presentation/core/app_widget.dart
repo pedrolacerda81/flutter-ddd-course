@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_ddd_course/application/auth/auth_bloc.dart';
 import 'package:notes_ddd_course/presentation/routes/router.gr.dart';
-import 'package:notes_ddd_course/presentation/signin/sign_in_page.dart';
 import '../../injection.dart';
 
 class AppWidget extends StatelessWidget {
