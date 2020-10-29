@@ -1,7 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_ddd_course/application/auth/auth_bloc.dart';
 import 'package:notes_ddd_course/application/auth/sign_in_form/sign_in_form_bloc.dart';
+import 'package:notes_ddd_course/presentation/routes/router.gr.dart';
 
 class SignInForm extends StatelessWidget {
   const SignInForm({Key key}) : super(key: key);
@@ -12,15 +15,20 @@ class SignInForm extends StatelessWidget {
         state.authFailureOrSuccessOption.fold(
             () {},
             (either) => either.fold(
-                (failure) => FlushbarHelper.createError(
-                      message: failure.map(
-                          cancelledByUser: (_) => 'Cancelled',
-                          serverError: (_) => 'Server error',
-                          emailAlreadyInUse: (_) => 'Email already in use',
-                          invalidEmailAndPasswordCombination: (_) =>
-                              'Invalid email and password combination'),
-                    ).show(context),
-                (_) {}));
+                    (failure) => FlushbarHelper.createError(
+                          message: failure.map(
+                              cancelledByUser: (_) => 'Cancelled',
+                              serverError: (_) => 'Server error',
+                              emailAlreadyInUse: (_) => 'Email already in use',
+                              invalidEmailAndPasswordCombination: (_) =>
+                                  'Invalid email and password combination'),
+                        ).show(context), (_) {
+                  ExtendedNavigator.of(context)
+                      .replace(Routes.notesOverviewPage);
+                  context
+                      .bloc<AuthBloc>()
+                      .add(const AuthEvent.authCheckRequested());
+                }));
       },
       builder: (context, state) {
         return Padding(

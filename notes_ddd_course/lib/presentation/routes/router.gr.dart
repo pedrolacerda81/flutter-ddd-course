@@ -4,91 +4,67 @@
 // AutoRouteGenerator
 // **************************************************************************
 
-import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:auto_route/auto_route.dart';
-import 'package:notes_ddd_course/presentation/splash/splash_page.dart';
-import 'package:notes_ddd_course/presentation/signin/sign_in_page.dart';
+// ignore_for_file: public_member_api_docs
 
-abstract class Routes {
-  static const splashPage = '/';
-  static const signInPage = '/sign-in-page';
-  static const all = {
+import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
+
+import '../notes/notes_overview/notes_overview_page.dart';
+import '../signin/sign_in_page.dart';
+import '../splash/splash_page.dart';
+
+class Routes {
+  static const String splashPage = '/';
+  static const String signInPage = '/sign-in-page';
+  static const String notesOverviewPage = '/notes-overview-page';
+  static const all = <String>{
     splashPage,
     signInPage,
+    notesOverviewPage,
   };
 }
 
 class Router extends RouterBase {
   @override
-  Set<String> get allRoutes => Routes.all;
-
-  @Deprecated('call ExtendedNavigator.ofRouter<Router>() directly')
-  static ExtendedNavigatorState get navigator =>
-      ExtendedNavigator.ofRouter<Router>();
-
+  List<RouteDef> get routes => _routes;
+  final _routes = <RouteDef>[
+    RouteDef(Routes.splashPage, page: SplashPage),
+    RouteDef(Routes.signInPage, page: SignInPage),
+    RouteDef(Routes.notesOverviewPage, page: NotesOverviewPage),
+  ];
   @override
-  Route<dynamic> onGenerateRoute(RouteSettings settings) {
-    final args = settings.arguments;
-    switch (settings.name) {
-      case Routes.splashPage:
-        if (hasInvalidArgs<SplashPageArguments>(args)) {
-          return misTypedArgsRoute<SplashPageArguments>(args);
-        }
-        final typedArgs = args as SplashPageArguments ?? SplashPageArguments();
-        return MaterialPageRoute<dynamic>(
-          builder: (context) => SplashPage(key: typedArgs.key),
-          settings: settings,
-        );
-      case Routes.signInPage:
-        if (hasInvalidArgs<SignInPageArguments>(args)) {
-          return misTypedArgsRoute<SignInPageArguments>(args);
-        }
-        final typedArgs = args as SignInPageArguments ?? SignInPageArguments();
-        return MaterialPageRoute<dynamic>(
-          builder: (context) => SignInPage(key: typedArgs.key),
-          settings: settings,
-        );
-      default:
-        return unknownRoutePage(settings.name);
-    }
-  }
-}
-
-// *************************************************************************
-// Arguments holder classes
-// **************************************************************************
-
-//SplashPage arguments holder class
-class SplashPageArguments {
-  final Key key;
-  SplashPageArguments({this.key});
-}
-
-//SignInPage arguments holder class
-class SignInPageArguments {
-  final Key key;
-  SignInPageArguments({this.key});
-}
-
-// *************************************************************************
-// Navigation helper methods extension
-// **************************************************************************
-
-extension RouterNavigationHelperMethods on ExtendedNavigatorState {
-  Future pushSplashPage({
-    Key key,
-  }) =>
-      pushNamed(
-        Routes.splashPage,
-        arguments: SplashPageArguments(key: key),
+  Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
+  final _pagesMap = <Type, AutoRouteFactory>{
+    SplashPage: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => const SplashPage(),
+        settings: data,
       );
-
-  Future pushSignInPage({
-    Key key,
-  }) =>
-      pushNamed(
-        Routes.signInPage,
-        arguments: SignInPageArguments(key: key),
+    },
+    SignInPage: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => const SignInPage(),
+        settings: data,
       );
+    },
+    NotesOverviewPage: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => const NotesOverviewPage(),
+        settings: data,
+      );
+    },
+  };
+}
+
+/// ************************************************************************
+/// Navigation helper methods extension
+/// *************************************************************************
+
+extension RouterExtendedNavigatorStateX on ExtendedNavigatorState {
+  Future<dynamic> pushSplashPage() => push<dynamic>(Routes.splashPage);
+
+  Future<dynamic> pushSignInPage() => push<dynamic>(Routes.signInPage);
+
+  Future<dynamic> pushNotesOverviewPage() =>
+      push<dynamic>(Routes.notesOverviewPage);
 }
