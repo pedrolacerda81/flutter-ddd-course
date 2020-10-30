@@ -26,7 +26,7 @@ abstract class NoteDto implements _$NoteDto {
         id: UniqueId.fromUniqueString(id),
         body: NoteBody(body),
         color: NoteColor(Color(color)),
-        toDos: List3(todos.map((dto) => dto.toDomain()).toImmutableList()),
+        todos: List3(todos.map((dto) => dto.toDomain()).toImmutableList()),
       );
 
   factory NoteDto.fromDomain(Note note) {
@@ -34,7 +34,7 @@ abstract class NoteDto implements _$NoteDto {
       id: note.id.getOrCrash(),
       body: note.body.getOrCrash(),
       color: note.color.getOrCrash().value,
-      todos: note.toDos
+      todos: note.todos
           .getOrCrash()
           .map((todoItem) => TodoItemDto.fromDomain(todoItem))
           .asList(),

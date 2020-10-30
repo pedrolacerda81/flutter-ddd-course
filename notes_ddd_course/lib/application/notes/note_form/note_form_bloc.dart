@@ -53,7 +53,7 @@ class NoteFormBloc extends Bloc<NoteFormEvent, NoteFormState> {
       todosChanged: (e) async* {
         yield state.copyWith(
           note: state.note.copyWith(
-            toDos: List3(e.todosList.map((primitive) => primitive.toDomain())),
+            todos: List3(e.todosList.map((primitive) => primitive.toDomain())),
           ),
           saveFailureOrSuccessOption: none(),
         );

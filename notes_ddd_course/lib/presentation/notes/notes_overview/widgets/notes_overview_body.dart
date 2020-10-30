@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_ddd_course/application/notes/note_watcher/note_watch_bloc.dart';
+import 'package:notes_ddd_course/presentation/notes/notes_overview/widgets/critical_failure_display.dart';
+import 'package:notes_ddd_course/presentation/notes/notes_overview/widgets/error_note_card.dart';
+import 'package:notes_ddd_course/presentation/notes/notes_overview/widgets/note_card.dart';
 
 class NotesOverviewBody extends StatelessWidget {
   const NotesOverviewBody({Key key}) : super(key: key);
@@ -19,27 +22,15 @@ class NotesOverviewBody extends StatelessWidget {
               itemBuilder: (context, index) {
                 final note = state.notes[index];
                 if (note.optionFailure.isSome()) {
-                  return Container(
-                    color: Colors.redAccent,
-                    width: 100.0,
-                    height: 100.0,
-                  );
+                  return ErrorNoteCard(note: note);
                 } else {
-                  return Container(
-                    color: Colors.green[400],
-                    width: 100.0,
-                    height: 100.0,
-                  );
+                  return NoteBody(note: note);
                 }
               },
             );
           },
           loadFailure: (state) {
-            return Container(
-              color: Colors.yellow,
-              width: 200.0,
-              height: 200.0,
-            );
+            return CriticalFailureDisplay(failure: state.noteFailure);
           },
         );
       },

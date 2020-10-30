@@ -16,12 +16,12 @@ class _$NoteTearOff {
       {@required UniqueId id,
       @required NoteBody body,
       @required NoteColor color,
-      @required List3<TodoItem> toDos}) {
+      @required List3<TodoItem> todos}) {
     return _Note(
       id: id,
       body: body,
       color: color,
-      toDos: toDos,
+      todos: todos,
     );
   }
 }
@@ -33,7 +33,7 @@ mixin _$Note {
   UniqueId get id;
   NoteBody get body;
   NoteColor get color;
-  List3<TodoItem> get toDos;
+  List3<TodoItem> get todos;
 
   $NoteCopyWith<Note> get copyWith;
 }
@@ -42,7 +42,7 @@ abstract class $NoteCopyWith<$Res> {
   factory $NoteCopyWith(Note value, $Res Function(Note) then) =
       _$NoteCopyWithImpl<$Res>;
   $Res call(
-      {UniqueId id, NoteBody body, NoteColor color, List3<TodoItem> toDos});
+      {UniqueId id, NoteBody body, NoteColor color, List3<TodoItem> todos});
 }
 
 class _$NoteCopyWithImpl<$Res> implements $NoteCopyWith<$Res> {
@@ -57,13 +57,13 @@ class _$NoteCopyWithImpl<$Res> implements $NoteCopyWith<$Res> {
     Object id = freezed,
     Object body = freezed,
     Object color = freezed,
-    Object toDos = freezed,
+    Object todos = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as UniqueId,
       body: body == freezed ? _value.body : body as NoteBody,
       color: color == freezed ? _value.color : color as NoteColor,
-      toDos: toDos == freezed ? _value.toDos : toDos as List3<TodoItem>,
+      todos: todos == freezed ? _value.todos : todos as List3<TodoItem>,
     ));
   }
 }
@@ -73,7 +73,7 @@ abstract class _$NoteCopyWith<$Res> implements $NoteCopyWith<$Res> {
       __$NoteCopyWithImpl<$Res>;
   @override
   $Res call(
-      {UniqueId id, NoteBody body, NoteColor color, List3<TodoItem> toDos});
+      {UniqueId id, NoteBody body, NoteColor color, List3<TodoItem> todos});
 }
 
 class __$NoteCopyWithImpl<$Res> extends _$NoteCopyWithImpl<$Res>
@@ -89,13 +89,13 @@ class __$NoteCopyWithImpl<$Res> extends _$NoteCopyWithImpl<$Res>
     Object id = freezed,
     Object body = freezed,
     Object color = freezed,
-    Object toDos = freezed,
+    Object todos = freezed,
   }) {
     return _then(_Note(
       id: id == freezed ? _value.id : id as UniqueId,
       body: body == freezed ? _value.body : body as NoteBody,
       color: color == freezed ? _value.color : color as NoteColor,
-      toDos: toDos == freezed ? _value.toDos : toDos as List3<TodoItem>,
+      todos: todos == freezed ? _value.todos : todos as List3<TodoItem>,
     ));
   }
 }
@@ -105,11 +105,11 @@ class _$_Note extends _Note with DiagnosticableTreeMixin {
       {@required this.id,
       @required this.body,
       @required this.color,
-      @required this.toDos})
+      @required this.todos})
       : assert(id != null),
         assert(body != null),
         assert(color != null),
-        assert(toDos != null),
+        assert(todos != null),
         super._();
 
   @override
@@ -119,11 +119,11 @@ class _$_Note extends _Note with DiagnosticableTreeMixin {
   @override
   final NoteColor color;
   @override
-  final List3<TodoItem> toDos;
+  final List3<TodoItem> todos;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Note(id: $id, body: $body, color: $color, toDos: $toDos)';
+    return 'Note(id: $id, body: $body, color: $color, todos: $todos)';
   }
 
   @override
@@ -134,7 +134,7 @@ class _$_Note extends _Note with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('body', body))
       ..add(DiagnosticsProperty('color', color))
-      ..add(DiagnosticsProperty('toDos', toDos));
+      ..add(DiagnosticsProperty('todos', todos));
   }
 
   @override
@@ -147,8 +147,8 @@ class _$_Note extends _Note with DiagnosticableTreeMixin {
                 const DeepCollectionEquality().equals(other.body, body)) &&
             (identical(other.color, color) ||
                 const DeepCollectionEquality().equals(other.color, color)) &&
-            (identical(other.toDos, toDos) ||
-                const DeepCollectionEquality().equals(other.toDos, toDos)));
+            (identical(other.todos, todos) ||
+                const DeepCollectionEquality().equals(other.todos, todos)));
   }
 
   @override
@@ -157,7 +157,7 @@ class _$_Note extends _Note with DiagnosticableTreeMixin {
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(body) ^
       const DeepCollectionEquality().hash(color) ^
-      const DeepCollectionEquality().hash(toDos);
+      const DeepCollectionEquality().hash(todos);
 
   @override
   _$NoteCopyWith<_Note> get copyWith =>
@@ -170,7 +170,7 @@ abstract class _Note extends Note {
       {@required UniqueId id,
       @required NoteBody body,
       @required NoteColor color,
-      @required List3<TodoItem> toDos}) = _$_Note;
+      @required List3<TodoItem> todos}) = _$_Note;
 
   @override
   UniqueId get id;
@@ -179,7 +179,7 @@ abstract class _Note extends Note {
   @override
   NoteColor get color;
   @override
-  List3<TodoItem> get toDos;
+  List3<TodoItem> get todos;
   @override
   _$NoteCopyWith<_Note> get copyWith;
 }

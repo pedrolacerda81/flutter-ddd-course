@@ -17,20 +17,20 @@ abstract class Note implements _$Note {
     @required UniqueId id,
     @required NoteBody body,
     @required NoteColor color,
-    @required List3<TodoItem> toDos,
+    @required List3<TodoItem> todos,
   }) = _Note;
 
   factory Note.empty() => Note(
         id: UniqueId(),
         body: NoteBody(''),
         color: NoteColor(NoteColor.predefinedColors[0]),
-        toDos: List3(emptyList()),
+        todos: List3(emptyList()),
       );
 
   Option<ValueFailure<dynamic>> get optionFailure => body.failureOrUnit
-      .andThen(toDos.failureOrUnit)
+      .andThen(todos.failureOrUnit)
       .andThen(
-        toDos
+        todos
             .getOrCrash()
             // Getting the failureOption from the TodoItem ENTITY - NOT a failureOrUnit from a VALUE OBJECT
             .map((todoItem) => todoItem.failureOption)
