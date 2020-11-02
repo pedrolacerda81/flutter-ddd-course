@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'note_watch_bloc.dart';
 
@@ -9,17 +9,21 @@ part of 'note_watch_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$NoteWatchEventTearOff {
   const _$NoteWatchEventTearOff();
 
+// ignore: unused_element
   _WatchAllStarted watchAllStarted() {
     return const _WatchAllStarted();
   }
 
+// ignore: unused_element
   _WatchUncompletedStarted watchUncompletedStarted() {
     return const _WatchUncompletedStarted();
   }
 
+// ignore: unused_element
   _NotesReceived notesReceived(
       Either<NoteFailure, KtList<Note>> failureOrNotes) {
     return _NotesReceived(
@@ -28,9 +32,11 @@ class _$NoteWatchEventTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $NoteWatchEvent = _$NoteWatchEventTearOff();
 
+/// @nodoc
 mixin _$NoteWatchEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
@@ -61,12 +67,14 @@ mixin _$NoteWatchEvent {
   });
 }
 
+/// @nodoc
 abstract class $NoteWatchEventCopyWith<$Res> {
   factory $NoteWatchEventCopyWith(
           NoteWatchEvent value, $Res Function(NoteWatchEvent) then) =
       _$NoteWatchEventCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$NoteWatchEventCopyWithImpl<$Res>
     implements $NoteWatchEventCopyWith<$Res> {
   _$NoteWatchEventCopyWithImpl(this._value, this._then);
@@ -76,12 +84,14 @@ class _$NoteWatchEventCopyWithImpl<$Res>
   final $Res Function(NoteWatchEvent) _then;
 }
 
+/// @nodoc
 abstract class _$WatchAllStartedCopyWith<$Res> {
   factory _$WatchAllStartedCopyWith(
           _WatchAllStarted value, $Res Function(_WatchAllStarted) then) =
       __$WatchAllStartedCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$WatchAllStartedCopyWithImpl<$Res>
     extends _$NoteWatchEventCopyWithImpl<$Res>
     implements _$WatchAllStartedCopyWith<$Res> {
@@ -93,6 +103,7 @@ class __$WatchAllStartedCopyWithImpl<$Res>
   _WatchAllStarted get _value => super._value as _WatchAllStarted;
 }
 
+/// @nodoc
 class _$_WatchAllStarted implements _WatchAllStarted {
   const _$_WatchAllStarted();
 
@@ -171,12 +182,14 @@ abstract class _WatchAllStarted implements NoteWatchEvent {
   const factory _WatchAllStarted() = _$_WatchAllStarted;
 }
 
+/// @nodoc
 abstract class _$WatchUncompletedStartedCopyWith<$Res> {
   factory _$WatchUncompletedStartedCopyWith(_WatchUncompletedStarted value,
           $Res Function(_WatchUncompletedStarted) then) =
       __$WatchUncompletedStartedCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$WatchUncompletedStartedCopyWithImpl<$Res>
     extends _$NoteWatchEventCopyWithImpl<$Res>
     implements _$WatchUncompletedStartedCopyWith<$Res> {
@@ -189,6 +202,7 @@ class __$WatchUncompletedStartedCopyWithImpl<$Res>
       super._value as _WatchUncompletedStarted;
 }
 
+/// @nodoc
 class _$_WatchUncompletedStarted implements _WatchUncompletedStarted {
   const _$_WatchUncompletedStarted();
 
@@ -267,6 +281,7 @@ abstract class _WatchUncompletedStarted implements NoteWatchEvent {
   const factory _WatchUncompletedStarted() = _$_WatchUncompletedStarted;
 }
 
+/// @nodoc
 abstract class _$NotesReceivedCopyWith<$Res> {
   factory _$NotesReceivedCopyWith(
           _NotesReceived value, $Res Function(_NotesReceived) then) =
@@ -274,6 +289,7 @@ abstract class _$NotesReceivedCopyWith<$Res> {
   $Res call({Either<NoteFailure, KtList<Note>> failureOrNotes});
 }
 
+/// @nodoc
 class __$NotesReceivedCopyWithImpl<$Res>
     extends _$NoteWatchEventCopyWithImpl<$Res>
     implements _$NotesReceivedCopyWith<$Res> {
@@ -296,6 +312,7 @@ class __$NotesReceivedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_NotesReceived implements _NotesReceived {
   const _$_NotesReceived(this.failureOrNotes) : assert(failureOrNotes != null);
 
@@ -391,23 +408,28 @@ abstract class _NotesReceived implements NoteWatchEvent {
   _$NotesReceivedCopyWith<_NotesReceived> get copyWith;
 }
 
+/// @nodoc
 class _$NoteWatchStateTearOff {
   const _$NoteWatchStateTearOff();
 
+// ignore: unused_element
   _Initial initial() {
     return const _Initial();
   }
 
+// ignore: unused_element
   _LoadInProgress loadInProgress() {
     return const _LoadInProgress();
   }
 
+// ignore: unused_element
   _LoadSuccess loadSuccess(KtList<Note> notes) {
     return _LoadSuccess(
       notes,
     );
   }
 
+// ignore: unused_element
   _LoadFailure loadFailure(NoteFailure noteFailure) {
     return _LoadFailure(
       noteFailure,
@@ -415,9 +437,11 @@ class _$NoteWatchStateTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $NoteWatchState = _$NoteWatchStateTearOff();
 
+/// @nodoc
 mixin _$NoteWatchState {
   @optionalTypeArgs
   Result when<Result extends Object>({
@@ -451,12 +475,14 @@ mixin _$NoteWatchState {
   });
 }
 
+/// @nodoc
 abstract class $NoteWatchStateCopyWith<$Res> {
   factory $NoteWatchStateCopyWith(
           NoteWatchState value, $Res Function(NoteWatchState) then) =
       _$NoteWatchStateCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$NoteWatchStateCopyWithImpl<$Res>
     implements $NoteWatchStateCopyWith<$Res> {
   _$NoteWatchStateCopyWithImpl(this._value, this._then);
@@ -466,11 +492,13 @@ class _$NoteWatchStateCopyWithImpl<$Res>
   final $Res Function(NoteWatchState) _then;
 }
 
+/// @nodoc
 abstract class _$InitialCopyWith<$Res> {
   factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) then) =
       __$InitialCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$InitialCopyWithImpl<$Res> extends _$NoteWatchStateCopyWithImpl<$Res>
     implements _$InitialCopyWith<$Res> {
   __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
@@ -480,6 +508,7 @@ class __$InitialCopyWithImpl<$Res> extends _$NoteWatchStateCopyWithImpl<$Res>
   _Initial get _value => super._value as _Initial;
 }
 
+/// @nodoc
 class _$_Initial implements _Initial {
   const _$_Initial();
 
@@ -563,12 +592,14 @@ abstract class _Initial implements NoteWatchState {
   const factory _Initial() = _$_Initial;
 }
 
+/// @nodoc
 abstract class _$LoadInProgressCopyWith<$Res> {
   factory _$LoadInProgressCopyWith(
           _LoadInProgress value, $Res Function(_LoadInProgress) then) =
       __$LoadInProgressCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$LoadInProgressCopyWithImpl<$Res>
     extends _$NoteWatchStateCopyWithImpl<$Res>
     implements _$LoadInProgressCopyWith<$Res> {
@@ -580,6 +611,7 @@ class __$LoadInProgressCopyWithImpl<$Res>
   _LoadInProgress get _value => super._value as _LoadInProgress;
 }
 
+/// @nodoc
 class _$_LoadInProgress implements _LoadInProgress {
   const _$_LoadInProgress();
 
@@ -663,6 +695,7 @@ abstract class _LoadInProgress implements NoteWatchState {
   const factory _LoadInProgress() = _$_LoadInProgress;
 }
 
+/// @nodoc
 abstract class _$LoadSuccessCopyWith<$Res> {
   factory _$LoadSuccessCopyWith(
           _LoadSuccess value, $Res Function(_LoadSuccess) then) =
@@ -670,6 +703,7 @@ abstract class _$LoadSuccessCopyWith<$Res> {
   $Res call({KtList<Note> notes});
 }
 
+/// @nodoc
 class __$LoadSuccessCopyWithImpl<$Res>
     extends _$NoteWatchStateCopyWithImpl<$Res>
     implements _$LoadSuccessCopyWith<$Res> {
@@ -690,6 +724,7 @@ class __$LoadSuccessCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_LoadSuccess implements _LoadSuccess {
   const _$_LoadSuccess(this.notes) : assert(notes != null);
 
@@ -787,6 +822,7 @@ abstract class _LoadSuccess implements NoteWatchState {
   _$LoadSuccessCopyWith<_LoadSuccess> get copyWith;
 }
 
+/// @nodoc
 abstract class _$LoadFailureCopyWith<$Res> {
   factory _$LoadFailureCopyWith(
           _LoadFailure value, $Res Function(_LoadFailure) then) =
@@ -796,6 +832,7 @@ abstract class _$LoadFailureCopyWith<$Res> {
   $NoteFailureCopyWith<$Res> get noteFailure;
 }
 
+/// @nodoc
 class __$LoadFailureCopyWithImpl<$Res>
     extends _$NoteWatchStateCopyWithImpl<$Res>
     implements _$LoadFailureCopyWith<$Res> {
@@ -826,6 +863,7 @@ class __$LoadFailureCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_LoadFailure implements _LoadFailure {
   const _$_LoadFailure(this.noteFailure) : assert(noteFailure != null);
 

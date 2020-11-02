@@ -61,8 +61,8 @@ class NotesOverviewPage extends StatelessWidget {
                 context.bloc<AuthBloc>().add(const AuthEvent.signedOut());
               },
             ),
-            actions: [
-              const UncompletedSwitch(),
+            actions: const [
+              UncompletedSwitch(),
             ],
           ),
           body: const NotesOverviewBody(),
