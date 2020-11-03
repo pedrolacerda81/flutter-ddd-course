@@ -43,7 +43,7 @@ class NotesOverviewPage extends StatelessWidget {
                         unexpected: (_) =>
                             'Unexpected error occured while deleting, please contact support.',
                         insufficientPermission: (_) =>
-                            'Insufficient permissions ⛔',
+                            'Insufficient permissions ❌',
                         unableToUpdate: (_) => 'Impossible error.',
                         unableToDelete: (_) => 'Impossible error.',
                       ),
@@ -68,7 +68,7 @@ class NotesOverviewPage extends StatelessWidget {
           body: const NotesOverviewBody(),
           floatingActionButton: FloatingActionButton(
             onPressed: () {
-              //TODO: navigate to notes form page
+              ExtendedNavigator.of(context).pushNoteFormPage(editedNote: null);
             },
             child: const Icon(
               Icons.add,
