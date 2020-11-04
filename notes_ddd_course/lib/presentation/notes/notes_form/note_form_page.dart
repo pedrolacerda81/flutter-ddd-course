@@ -6,9 +6,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_ddd_course/application/notes/note_form/note_form_bloc.dart';
 import 'package:notes_ddd_course/domain/notes/note.dart';
 import 'package:notes_ddd_course/injection.dart';
+import 'package:notes_ddd_course/presentation/notes/notes_form/misc/todo_item_presentation_classes.dart';
+import 'package:notes_ddd_course/presentation/notes/notes_form/widgets/add_todo_tile.dart';
 import 'package:notes_ddd_course/presentation/notes/notes_form/widgets/body_field.dart';
 import 'package:notes_ddd_course/presentation/notes/notes_form/widgets/color_field.dart';
 import 'package:notes_ddd_course/presentation/routes/router.gr.dart';
+import 'package:provider/provider.dart';
 
 class NoteFormPage extends StatelessWidget {
   final Note editedNote;
@@ -132,14 +135,18 @@ class NoteFormPageScaffold extends StatelessWidget {
         buildWhen: (previousState, currentState) =>
             previousState.showErrorMessage != currentState.showErrorMessage,
         builder: (context, snapshot) {
-          return Form(
-            autovalidateMode: AutovalidateMode.always,
-            child: SingleChildScrollView(
-              child: Column(
-                children: const [
-                  BodyField(),
-                  ColorField(),
-                ],
+          return ChangeNotifierProvider(
+            create: (_) => FormTodos(),
+            child: Form(
+              autovalidateMode: AutovalidateMode.always,
+              child: SingleChildScrollView(
+                child: Column(
+                  children: const [
+                    BodyField(),
+                    ColorField(),
+                    AddTodoTile(),
+                  ],
+                ),
               ),
             ),
           );
