@@ -10,5 +10,5 @@ abstract class FirebaseInjectableModule {
   @lazySingleton
   GoogleSignIn get googleSignIn => GoogleSignIn();
   @lazySingleton
-  Firestore get firestor => Firestore.instance;
+  FirebaseFirestore get firestor => FirebaseFirestore.instance;
 }
