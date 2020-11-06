@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:implicitly_animated_reorderable_list/implicitly_animated_reorderable_list.dart';
 import 'package:kt_dart/collection.dart';
 import 'package:notes_ddd_course/application/notes/note_form/note_form_bloc.dart';
 import 'package:notes_ddd_course/domain/notes/value_objects.dart';
@@ -20,31 +21,46 @@ class TodoList extends StatelessWidget {
       listener: (context, state) {
         if (state.note.todos.isFull) {
           FlushbarHelper.createAction(
-            duration: const Duration(seconds: 5),
-            message: 'Want longer lists? Go premium 🤩',
+            message: 'Want longer lists? Activate premium 🤩',
             button: FlatButton(
-              onPressed: () => debugPrint('buy now pressed'),
+              onPressed: () {},
               child: const Text(
                 'BUY NOW',
-                style: TextStyle(
-                  color: Colors.amber,
-                ),
+                style: TextStyle(color: Colors.yellow),
               ),
             ),
+            duration: const Duration(seconds: 5),
           ).show(context);
         }
       },
       child: Consumer<FormTodos>(
         builder: (context, formTodos, child) {
-          return ListView.builder(
+          return ImplicitlyAnimatedReorderableList<TodoItemPrimitive>(
             shrinkWrap: true,
-            itemBuilder: (context, index) {
-              return TodoTile(
-                key: ValueKey(context.formTodos[index].id),
-                index: index,
+            removeDuration: const Duration(),
+            items: formTodos.value.asList(),
+            areItemsTheSame: (oldItem, newItem) => oldItem.id == newItem.id,
+            onReorderFinished: (item, from, to, newItems) {
+              context.formTodos = newItems.toImmutableList();
+              context
+                  .bloc<NoteFormBloc>()
+                  .add(NoteFormEvent.todosChanged(context.formTodos));
+            },
+            itemBuilder: (context, itemAnimation, item, index) {
+              return Reorderable(
+                key: ValueKey(item.id),
+                builder: (context, dragAnimation, inDrag) {
+                  return ScaleTransition(
+                    scale: Tween<double>(begin: 1, end: 0.95)
+                        .animate(dragAnimation),
+                    child: TodoTile(
+                      index: index,
+                      elevation: dragAnimation.value * 4,
+                    ),
+                  );
+                },
               );
             },
-            itemCount: formTodos.value.size,
           );
         },
       ),
@@ -149,6 +165,9 @@ class TodoTile extends HookWidget {
                             ),
                       );
                 },
+              ),
+              trailing: const Handle(
+                child: Icon(Icons.list),
               ),
             ),
           ),
